@@ -1,0 +1,554 @@
+{{extend 'layout.html'}}
+<form class="form-horizontal" method="POST">
+   <div id="dvPrimer" class="container">
+    <div class="row">
+        <div class="col align-self-center text-center">
+            <h1>
+                <label id="lblManoObra" >Mano de obra</label>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col align-self-center">
+            <h3>
+                <label id="lblManoObra" >Salarios</label>
+            </h3>
+        </div>
+    </div>
+    <section class="col-md-11 col-sm-12 col-lg-11 col-offset-md-1 col-offset-lg-1">
+    <section class="table table-bordered table-striped text-center">
+        <article class="row modal-header table-info">
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Puesto</span>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Personal</span>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Días</span>
+            </article>
+        </article>
+        {{for pues in puestos:}}
+        <article class="row modal-header table-light">
+            <article class="col-md-2 col-lg-2 ">
+                <a type="text" class="label label-default">{{=pues.descripcion}}</a>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="number" class="form-control text-center" min="0" id="ppersonal{{=pues.id}}" name="pPersonal{{=pues.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="number" class="form-control text-center" min="0" id="pDias{{=pues.id}}" name="pDias{{=pues.id}}">
+            </article>
+         </article>
+        {{pass}}
+        </section>
+        </section>
+        <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Horas extras simples</label>
+                </h3>
+            </div>
+        </div>
+        <section class="col-md-11 col-sm-12 col-lg-11 col-offset-md-1 col-offset-lg-1">
+    <section class="table table-bordered table-striped text-center">
+        <article class="row modal-header table-info">
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Puesto</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Personal</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Días</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Horas</span>
+            </article>
+        </article>
+        {{for pue in puestos:}}
+        <article class="row modal-header table-light">
+            <article class="col-md-2 col-lg-2 ">
+                <a type="text" class="label label-default">{{=pue.descripcion}}</a>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" min="0" id="pPersonalhe{{=pue.id}}" name="pPersonalhe{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pDiashe{{=pue.id}}" name="pDiashe{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pHorashe{{=pue.id}}" name="pDiashe{{=pue.id}}">
+            </article>
+         </article>
+        {{pass}}
+        </section>
+        </section>
+       <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Horas extras dobles</label>
+                </h3>
+            </div>
+        </div>
+        <section class="col-md-11 col-sm-12 col-lg-11 col-offset-md-1 col-offset-lg-1">
+    <section class="table table-bordered table-striped text-center">
+        <article class="row modal-header table-info">
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Puesto</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Personal</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Días</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Horas</span>
+            </article>
+        </article>
+        {{for pue in puestos:}}
+        <article class="row modal-header table-light">
+            <article class="col-md-2 col-lg-2 ">
+                <a type="text" class="label label-default">{{=pue.descripcion}}</a>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pPersonalhed{{=pue.id}}" name="pPersonalhed{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pDiashed{{=pue.id}}" name="pDiashed{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pHorashed{{=pue.id}}" name="pDiashed{{=pue.id}}" value="8">
+            </article>
+         </article>
+        {{pass}}
+        </section>
+        </section>
+       <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Viaticos</label>
+                </h3>
+            </div>
+        </div>
+        <section class="col-md-11 col-sm-12 col-lg-11 col-offset-md-1 col-offset-lg-1">
+    <section class="table table-bordered table-striped text-center">
+        <article class="row modal-header table-info">
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Puesto</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Personal</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Días</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Tiempos</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Costo unitario</span>
+            </article>
+        </article>
+        {{for pue in puestos:}}
+        <article class="row modal-header table-light">
+            <article class="col-md-2 col-lg-2 ">
+                <a type="text" class="label label-default">{{=pue.descripcion}}</a>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pPersonalvia{{=pue.id}}" name="pPersonalvia{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pDiasvia{{=pue.id}}" name="pDiasvia{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pHorasvia{{=pue.id}}" name="pDiasvia{{=pue.id}}" >
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pCostovia{{=pue.id}}" name="pCostovia{{=pue.id}}" vlaue="25" >
+            </article>
+         </article>
+        {{pass}}
+        </section>
+        </section>
+       <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Pasajes</label>
+                </h3>
+            </div>
+        </div>
+        <section class="col-md-11 col-sm-12 col-lg-11 col-offset-md-1 col-offset-lg-1">
+    <section class="table table-bordered table-striped text-center">
+        <article class="row modal-header table-info">
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Puesto</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Personal</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Días</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Viajes</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Costo unitario</span>
+            </article>
+        </article>
+        {{for pue in puestos:}}
+        <article class="row modal-header table-light">
+            <article class="col-md-2 col-lg-2 ">
+                <a type="text" class="label label-default">{{=pue.descripcion}}</a>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pPersonalpas{{=pue.id}}" name="pPersonalpas{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pDiaspas{{=pue.id}}" name="pDiaspas{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pHoraspas{{=pue.id}}" name="pDiaspas{{=pue.id}}" >
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pCostopas{{=pue.id}}" name="pCostopas{{=pue.id}}"  >
+            </article>
+         </article>
+        {{pass}}
+        </section>
+        </section>
+       <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Hospedaje</label>
+                </h3>
+            </div>
+        </div>
+        <section class="col-md-11 col-sm-12 col-lg-11 col-offset-md-1 col-offset-lg-1">
+    <section class="table table-bordered table-striped text-center">
+        <article class="row modal-header table-info">
+            <article class="col-md-2 col-lg-2 ">
+                <span class="label label-primary">Puesto</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Personal</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Días</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Noches</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Costo unitario</span>
+            </article>
+        </article>
+        {{for pue in puestos:}}
+        <article class="row modal-header table-light">
+            <article class="col-md-2 col-lg-2 ">
+                <a type="text" class="label label-default">{{=pue.descripcion}}</a>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pPersonalhos{{=pue.id}}" name="pPersonalhos{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pDiashos{{=pue.id}}" name="pDiashos{{=pue.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pHorashos{{=pue.id}}" name="pDiashos{{=pue.id}}" >
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pCostohos{{=pue.id}}" name="pCostohos{{=pue.id}}"  >
+            </article>
+         </article>
+        {{pass}}
+        </section>
+        </section>
+        <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Transporte</label>
+                </h3>
+            </div>
+        </div>
+        <section class="col-md-11 col-sm-12 col-lg-11 col-offset-md-1 col-offset-lg-1">
+    <section class="table table-bordered table-striped text-center">
+        <article class="row modal-header table-info">
+            <article class="col-md-2 col-lg-2 ">
+                    <span class="label label-primary">Tipo</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">Viajes</span>
+            </article>
+            <article class="col-md-2 col-lg-2">
+                <span class="label label-primary">KM</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">KM/Mensual</span>
+            </article>
+            <article class="col-md-2 col-lg-2" >
+                <span class="label label-primary">Q/km</span>
+            </article>
+        </article>
+        {{for transp in transporte:}}
+        <article class="row modal-header table-light">
+            <article class="col-md-2 col-lg-2 ">
+                <a type="text" class="label label-default">{{=transp.descripcion}}</a>
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pViajesTransp{{=transp.id}}" name="pViajesTransp{{=transp.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pKM{{=transp.id}}" name="pKM{{=transp.id}}">
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pKMmen{{=transp.id}}" name="pKMmen{{=transp.id}}" >
+            </article>
+            <article class="col-md-2 col-lg-2 ">
+                <input type="text" class="form-control text-center" id="pQKm{{=transp.id}}" name="pQKm{{=transp.id}}" value="{{=transp.valor_kilo}}" >
+            </article>
+         </article>
+        {{pass}}
+        </section>
+        </section>
+       <section class="col-md-12 col-lg-12 col-sm-12">
+           <article class="col align-self-center text-center">
+               <input type="Button" onclick="clickSiguiente()" value="Siguiente" class="btn btn-success"/>
+               <input type="Button" onclick="clickCalculoFinal()" class="btn btn-success"/>
+           </article>
+       </section>
+    </div>
+    <div id="dvSegundo" class="col-md-11 col-lg-11 offset-md-1 offset-lg-1 col-sm-12" style="display:none">
+        <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Materiales</label>
+                </h3>
+            </div>
+        </div>
+       <table id="TablaMateriales" class=" table table-responsive order-list">
+        <thead>
+            <tr class="table-light">
+                <td>Item</td>
+                <td>Descripcion</td>
+                <td>Unidad</td>
+                <td>Cantidad</td>
+                <td>P.Unitario</td>
+                <td>P.Total</td>
+                <td>Proveedor</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="number" name="Item0" class="form-control" style="width:45px" value="1" disabled />
+                </td>
+                <td>
+                    {{rows = db().select(db.op_material.ALL)}}
+                <select  name="material" class="form-control" style="width:500px">
+                    {{for row in rows:}}
+                    <option value="{{=row.id}}">
+                        {{=row.descripcion}}
+                    </option>
+                    {{pass}}
+                </select>
+                </td>
+                <td>
+                    <input type="number" min="0" name="Unidad0" style="width:75px" class="form-control"/>
+                </td>
+                <td>
+                    <input type="number" min="0" id="Cantidad0" name="Cantidad0" style="width:75px" value="0" onchange="calcular(0)" class="form-control"/>
+                </td>
+                <td>
+                    <input type="text" name="Proveedor0" style="width:150px" class="form-control"/>
+                </td>
+                <td class="col-sm-2 col-lg-2 col-md-2"><a class="deleteRow"></a>
+
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align: left;">
+                    <input type="button" class="btn btn-lg btn-info " id="addrow" value="Agregar fila +" />
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </tfoot>
+        </table>
+         <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Consumibles</label>
+                </h3>
+            </div>
+        </div>
+        <table id="TablaMateriales" class=" table table-responsive order-list2">
+        <thead>
+            <tr class="table-light">
+                <td>Item</td>
+                <td>Descripcion</td>
+                <td>Unidad</td>
+                <td>Cantidad</td>
+                <td>Proveedor</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="number" name="Itemcon0" class="form-control" style="width:45px" value="1" disabled />
+                </td>
+                <td >
+                    <input type="text" name="Descripcioncon" style="width:500px"  class="form-control"/>
+                </td>
+                <td>
+                    <input type="number" min="0" name="Unidadcon0" style="width:75px" class="form-control"/>
+                </td>
+                <td>
+                    <input type="number" min="0" name="Cantidadcon0" style="width:75px" class="form-control"/>
+                </td>
+                <td>
+                    <input type="number" min="0" name="PUnitariocon0"  value="0" style="width:75px" onchange="calcular2(0)" class="form-control"/>
+                </td>
+                <td>
+                    <input type="number" min="0" name="Ptotalcon0"  value="0" style="width:75px" onchange="calcular2(0)" class="form-control"/>
+                </td>
+                <td>
+                    <input type="text" name="Proveedorcon0" style="width:150px" class="form-control"/>
+                </td>
+                <td class="col-sm-2 col-lg-2 col-md-2"><a class="deleteRowcon"></a>
+
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align: left;">
+                    <input type="button" class="btn btn-lg btn-info " id="addrowcon" value="Agregar fila +" />
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </tfoot>
+        </table>
+        <div class="row">
+            <div class="col align-self-center">
+                <h3>
+                    <label id="lblManoObra" >Total del proyecto:</label>
+                </h3>
+                <input type="number" min="0" id="TotalProyecto" name="TotalProyecto" style="width:200px" class="form-control" disabled/>
+            </div>
+        </div>
+         <section class=" row col-md-12 col-lg-12 col-sm-12 modal-body">
+           <article class="col-md-4 col-lg-4 col-sm-12 modal-body">
+               <input type="Button" onclick="clickatras()" value="Regresar" class="btn btn-danger"/>
+           </article>
+           <article class="col-md-4 col-lg-4 col-sm-12 modal-body">
+               <input type="Button" value="Calcular" onclick="clickCalculoFinal()" class="btn btn-info"/>
+           </article>
+           <article class="col-md-4 col-lg-4 col-sm-12 modal-body">
+               <input type="submit" id="btnGuardar" value="Guardar" class="btn btn-success" disabled/>
+           </article>
+       </section>
+    </div>
+</form>
+<script type="text/javascript" >
+    $(document).ready(function () {
+    var counter = 1;
+    var countercon = 1;
+    $("#addrow").on("click", function () {
+        var newRow = $("<tr>");
+        var cols = "";
+
+        cols += '<td><input type="text" class="form-control" style="width:45px" name="Item' + counter + '" value="' + (counter+1) + '" disabled/></td>';
+        cols += '<td><input type="text" class="form-control" style="width:500px" name="Descripcion' + counter + '"/></td>';
+        cols += '<td><input type="number" class="form-control" style="width:75px" name="Unidad' + counter + '"/></td>';
+        cols += '<td><input type="number" class="form-control" style="width:75px" value="0" onchange="calcular(' + counter + ')" id="Cantidad' + counter + '" name="Cantidad' + counter + '"/></td>';
+        cols += '<td><input type="number" class="form-control" style="width:100px" value="0" onchange="calcular(' + counter + ')" id="PUnitario' + counter + '" name="PUnitario' + counter + '"/></td>';
+        cols += '<td><input type="number" class="form-control" style="width:100px" id="Ptotal' + counter + '" name="Ptotal' + counter + '" disabled/></td>';
+        cols += '<td><input type="text" class="form-control" style="width:150px" name="Proveedor' + counter + '"/></td>';
+
+        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Borrar"></td>';
+        newRow.append(cols);
+        $("table.order-list").append(newRow);
+        counter++;
+    });
+    $("#addrowcon").on("click", function () {
+        var newRow = $("<tr>");
+        var cols2 = "";
+
+        cols2 += '<td><input type="text" class="form-control" style="width:45px" name="Itemcon' + countercon + '" value="' + (countercon+1) + '" disabled/></td>';
+        cols2 += '<td><input type="text" class="form-control" style="width:500px" name="Descripcioncon' + countercon + '"/></td>';
+        cols2 += '<td><input type="number" class="form-control" style="width:75px" name="Unidadcon' + countercon + '"/></td>';
+        cols2 += '<td><input type="number" class="form-control" style="width:75px" onchange="calcular2(' + counter + ')" value="0" id="Cantidadcon' + countercon + '" name="Cantidadcon' + countercon + '"/></td>';
+        cols2 += '<td><input type="number" class="form-control" style="width:100px" onchange="calcular2(' + counter + ')" value="0" id="PUnitariocon' + countercon + '" name="PUnitariocon' + countercon + '"/></td>';
+        cols2 += '<td><input type="number" class="form-control" style="width:100px" id="Ptotalcon' + countercon + '" name="Ptotalcon' + countercon + '" disabled/></td>';
+        cols2 += '<td><input type="text" class="form-control" style="width:150px" name="Proveedorcon' + countercon + '"/></td>';
+
+        cols2 += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Borrar"></td>';
+        newRow.append(cols2);
+        $("table.order-list2").append(newRow);
+        countercon++;
+    });
+
+
+
+    $("table.order-list").on("click", ".ibtnDel", function (event) {
+        $(this).closest("tr").remove();
+        counter -= 1
+    });
+
+    $("table.order-list2").on("click", ".ibtnDel", function (event) {
+        $(this).closest("tr").remove();
+        countercon -= 1
+    });
+
+
+});
+
+    function calcular(contador)
+    {
+        var cantidad = document.getElementById("Cantidad" + contador).value;
+        var precio = document.getElementById("PUnitario" + contador).value;
+        var total = parseInt(cantidad) * parseInt(precio);
+        document.getElementById("Ptotal" + contador).value = total;
+    };
+    function calcular2(contador)
+    {
+        var cantidad = document.getElementsByName("Cantidadcon" + contador).value;
+        var precio = document.getElementsByName("PUnitariocon" + contador).value;
+        var total = parseInt(cantidad) * parseInt(precio);
+        document.getElementsByName("Ptotalcon" + contador).value = total.toString();
+    };
+    function clickSiguiente(){
+        var totalSalario = 0;
+        var salarioUnitario = 0;
+        {{for pues in puestos:}}
+        var ppersonas = document.getElementById("ppersonal{{=pues.id}}").value;
+        var pdias = document.getElementById("pDias{{=pues.id}}").value;
+        if(isNaN(ppersonas) || isNaN(pdias))
+        {
+            salarioUnitario = 0;
+        }
+        else
+        {
+            var puestosalario = {{=pues.salario_dia}};
+            salarioUnitario = ppersonas * pdias * puestosalario;
+            totalSalario = totalSalario + salarioUnitario;
+        }
+        {{pass}}
+       document.getElementById("dvPrimer").style = "display:none";
+       document.getElementById("dvSegundo").style = "display:block";
+    };
+    function clickatras(){
+       document.getElementById("dvPrimer").style = "display:block";
+       document.getElementById("dvSegundo").style = "display:none";
+    };
+    function clickCalculoFinal(){
+        document.getElementById("TotalProyecto").value = totalSalario;
+        document.getElementById("btnGuardar").disabled = false;
+    }
+</script>

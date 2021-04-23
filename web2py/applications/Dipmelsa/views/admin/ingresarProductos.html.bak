@@ -1,0 +1,78 @@
+{{extend 'layout.html'}}
+<form class="form-horizontal" method="POST">
+   <div id="dvPrimer" class="col-md-11 col-offset-md-1 col-offset-lg-1 col-lg-11 col-sm-12" >
+    <div class="row text-center">
+         <h1>
+             <label>Ingreso de materiales</label>
+         </h1>
+    </div>
+    <table id="TablaMateriales" class="table table-bordered table-striped text-center">
+        <thead>
+            <tr class="table-light">
+                <td>Descripcion</td>
+                <td>Precio Unitario</td>
+                <td>Marca</td>
+            </tr>
+        </thead>
+        <tbody>
+         {{for pue in materiales:}}
+            <tr>
+                <td>
+                   <a type="text" class="label label-default">{{=pue.descripcion}}</a>
+                </td>
+                <td>
+                   <a type="text" class="label label-default">{{=pue.precio_unitario}}</a>
+                </td>
+                <td>
+                   <a type="text" class="label label-default">{{=pue.marca}}</a>
+                </td>
+            </tr>
+        {{pass}}
+        </tbody>
+         <tfoot>
+            <tr>
+                <td colspan="5" style="text-align: left;">
+                    <input type="button" class="btn btn-lg btn-info " id="addrow" value="Agregar Material +" />
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </tfoot>
+        </table>
+   </div>
+   <div id="dvSegundo" class="container" style="display:none">
+     <div class="row">
+         <h1>
+             <label>Ingreso de materiales</label>
+         </h1>
+     </div>
+     <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Nombre del material: <input type="text" id="nombreMaterial" name="nombreMaterial" class="form-control" />
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Precio unitario: <input type="number" min="0" id="precio" name="precio" class="form-control" />
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                Marca: <input type="text" id="marca" name="marca" class="form-control" />
+            </div>
+        </div>
+     </div>
+     <div class="row">
+        <div class="col text-right">
+            <input type="Submit" name="Guardar" value="Guardar" />
+        </div>
+     </div>
+   </div>
+</form>
+<script type="text/javascript" >
+    function clickSiguiente(){
+       document.getElementById("dvPrimer").style = "display:none";
+       document.getElementById("dvSegundo").style = "display:block";
+    };
+    function clickatras(){
+       document.getElementById("dvPrimer").style = "display:block";
+       document.getElementById("dvSegundo").style = "display:none";
+    };
+</script>

@@ -1,0 +1,209 @@
+timestamp: 2021-01-27T10:01:22.045380
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+success!
+timestamp: 2021-01-27T10:01:22.062283
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-01-27T10:01:22.077286
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-01-27T10:01:22.089921
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2021-01-27T10:01:22.104038
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-01-27T10:01:22.115045
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2021-02-08T11:35:18.206837
+CREATE TABLE "rh_puesto"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "salario_dia" DOUBLE,
+    "fecha_alta" DATE,
+    "fecha_baja" DATE,
+    "fecha_modifica" DATE,
+    "usuario_alta" TEXT,
+    "usuario_baja" TEXT,
+    "usuario_modifica" TEXT,
+    "estado" INTEGER
+);
+success!
+timestamp: 2021-02-08T13:27:58.908654
+CREATE TABLE "rh_empleado"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nombres" TEXT,
+    "apellidos" TEXT,
+    "dpi" TEXT,
+    "nit" TEXT,
+    "no_igss" TEXT,
+    "no_irtra" TEXT,
+    "sexo" INTEGER,
+    "cod_puesto" INTEGER REFERENCES "rh_puesto" ("id") ON DELETE CASCADE  ,
+    "fecha_nacimiento" DATE,
+    "fecha_baja" DATE,
+    "fecha_alta" DATE,
+    "usuario_alta" TEXT,
+    "usuario_baja" TEXT,
+    "usuario_modifica" TEXT,
+    "estado" INTEGER,
+    "cantidad_hijos" INTEGER,
+    "salario" DOUBLE,
+    "bonificacion" DOUBLE
+);
+success!
+timestamp: 2021-02-08T13:27:58.963666
+CREATE TABLE "op_cotizacion"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "nombre_proyecto" TEXT,
+    "fecha_crea" DATE,
+    "usuario_modifica" TEXT,
+    "fecha_modifica" DATE,
+    "total_mano_obra" DOUBLE,
+    "fianzas" INTEGER
+);
+success!
+timestamp: 2021-02-08T13:27:59.149647
+CREATE TABLE "op_per_cotizacion"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "cod_cotizacion" INTEGER REFERENCES "op_cotizacion" ("id") ON DELETE CASCADE  ,
+    "salario_dia" DOUBLE,
+    "fecha_modifica" DATE,
+    "total_mano_obra" DOUBLE,
+    "fianzas" INTEGER
+);
+success!
+timestamp: 2021-02-08T13:28:58.952937
+CREATE TABLE "op_tipo_hora"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT
+);
+success!
+timestamp: 2021-02-08T14:28:58.967062
+CREATE TABLE "op_horex_cotizacion"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "cod_cotizacion" INTEGER REFERENCES "op_cotizacion" ("id") ON DELETE CASCADE  ,
+    "costo_unitario" DOUBLE,
+    "cantidad_personas" INTEGER,
+    "cantidad_dias" INTEGER,
+    "cantidad_horas" DOUBLE,
+    "cod_tipo_hora" INTEGER REFERENCES "op_tipo_hora" ("id") ON DELETE CASCADE  
+);
+success!
+timestamp: 2021-02-08T14:48:37.730424
+CREATE TABLE "op_viatico_cotizacion"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "cod_cotizacion" INTEGER REFERENCES "op_cotizacion" ("id") ON DELETE CASCADE  ,
+    "costo_unitario" DOUBLE,
+    "cantidad_personas" INTEGER,
+    "cantidad_dias" INTEGER,
+    "cantidad_tiempos" DOUBLE
+);
+success!
+timestamp: 2021-03-15T14:19:16.941983
+ALTER TABLE "op_viatico_cotizacion" ADD "cod_empleado" INTEGER REFERENCES "rh_empleado" ("id") ON DELETE CASCADE  ;
+success!
+timestamp: 2021-03-15T14:23:16.940176
+ALTER TABLE "op_viatico_cotizacion" ADD "geo_lugar" TEXT;
+success!
+timestamp: 2021-03-18T10:22:12.532455
+ALTER TABLE "rh_puesto" ADD "ind_cotizacion" INTEGER;
+success!
+timestamp: 2021-03-19T14:59:59.590810
+CREATE TABLE "op_tipo_transporte"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "valor_kilo" DOUBLE
+);
+success!
+timestamp: 2021-03-19T15:00:59.595515
+ALTER TABLE "op_cotizacion" ADD "tipo_transporte" INTEGER REFERENCES "op_tipo_transporte" ("id") ON DELETE CASCADE  ;
+success!
+timestamp: 2021-04-05T11:47:21.941324
+CREATE TABLE "op_materiales"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "precio_unitario" DOUBLE,
+    "marca" TEXT
+);
+success!
+timestamp: 2021-04-05T14:24:42.285774
+CREATE TABLE "op_material"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "precio_unitario" DOUBLE,
+    "marca" TEXT
+);
+success!
+timestamp: 2021-04-05T14:24:42.297776
+CREATE TABLE "op_mat_cotizacion"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "material" INTEGER REFERENCES "op_material" ("id") ON DELETE CASCADE  ,
+    "cantidad" DOUBLE
+);
+success!
+timestamp: 2021-04-05T14:24:42.321781
+ALTER TABLE "op_cotizacion" ADD "materiales" INTEGER REFERENCES "op_mat_cotizacion" ("id") ON DELETE CASCADE  ;
+success!
+timestamp: 2021-04-23T13:49:32.759279
+CREATE TABLE "op_porcentaje_impuesto"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "valor" DOUBLE
+);
+success!
+timestamp: 2021-04-23T13:49:32.777283
+CREATE TABLE "op_porcentaje_utilidad"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "valor" DOUBLE
+);
+success!
+timestamp: 2021-04-23T13:50:50.471198
+CREATE TABLE "op_porcentaje_material"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "descripcion" TEXT,
+    "valor" DOUBLE
+);
+success!
